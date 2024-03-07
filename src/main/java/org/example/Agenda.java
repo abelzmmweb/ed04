@@ -11,8 +11,8 @@ import java.util.List;
  * @since 2024
  * @author Abel Martínez
  */
-public class Agenda {
-    public List<Contacto> contacts; // Lista de Contacto
+public class Agenda implements IAgenda {
+    public List<Persona> contacts; // Lista de Persona
     
     /**
      * Método constructor por defecto que crea una nueva lista de contactos.
@@ -26,9 +26,10 @@ public class Agenda {
      * @param name el nombre del contacto que se quiere añadir.
      * @param phone el número de teléfono del contacto que queremos añadir.
      */
+    @Override
     public void addContact(String name, String phone) {
         boolean exists = false;
-        for (Contacto c : getContacts()) {
+        for (Persona c : getContacts()) {
             if (c.getName().equalsIgnoreCase(name)) {
                 exists = true;
                 c.getPhones().add(phone);
@@ -37,7 +38,7 @@ public class Agenda {
         }
 
         if (!exists) {
-            Contacto newContact = new Contacto(name, phone);
+            Persona newContact = new Persona(name, phone);
             getContacts().add(newContact);
         }
     }
@@ -46,11 +47,12 @@ public class Agenda {
      * El método removeContact sirve para borrar un contacto de la lista previamente creada.
      * @param name el nombre del contacto que queremos eliminar.
      */
+    @Override
     public void removeContact(String name) {
-        Iterator<Contacto> it = getContacts().iterator();
+        Iterator<Persona> it = getContacts().iterator();
 
         while (it.hasNext()) {
-            Contacto c = it.next();
+            Persona c = it.next();
 
             if (c.getName().equalsIgnoreCase(name)) {
                 it.remove();
@@ -64,8 +66,9 @@ public class Agenda {
      * @param oldPhone el número de teléfono previamente añadido que queremos cambiar.
      * @param newPhone el número de teléfono que queremos añadir.
      */
+    @Override
     public void modifyPhoneNumber(String name, String oldPhone, String newPhone) {
-        for (Contacto c : getContacts()) {
+        for (Persona c : getContacts()) {
             if (c.getName().equalsIgnoreCase(name)) {
                 List<String> phones = c.getPhones();
 
@@ -82,14 +85,15 @@ public class Agenda {
      * Método getContacts que sirve para obtener los contactos de una lista.
      * @return los contactos añadidos a la lista indicada.
      */
-    public List<Contacto> getContacts() {
+    @Override
+    public List<Persona> getContacts() {
         return this.contacts;
     }
 
     /**
      * @param contacts the contacts to set
      */
-    private void setContacts(List<Contacto> contacts) {
+    private void setContacts(List<Persona> contacts) {
         this.contacts = contacts;
     }
 }

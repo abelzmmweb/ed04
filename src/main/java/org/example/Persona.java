@@ -11,27 +11,34 @@ import java.util.List;
  * @since 2024
  * @version 1.0
  */
-public class Contacto {
-    private String name;
-    private List<String> phones;
+public class Persona {
+    public String name;
+    public List<String> phones;
 
     /**
      * Método constructor "Contacto" para añadir un objeto contacto.
      * @param name será el nombre del contacto.
      * @param phone será un número de teléfono asociado a este contacto.
      */
-    public Contacto(String name, String phone) {
+    public Persona(String name, String phone) {
         this.name = name;
         this.phones = new ArrayList<>();
         this.phones.add(phone);
     }
 
-    /**
+     /**
      * Método getName, que sirve para obtener el nombre del contacto citado.
      * @return el nombre del contacto.
      */
     public String getName() {
-        return this.name;
+        return name;
+    }
+
+    /** Método setName, que sirve para poder modificar el nombre (name).
+     * @param name el nombre el contacto.
+     */
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
@@ -40,18 +47,11 @@ public class Contacto {
      * @return la lista de números de teléfono del contacto.
      */
     public List<String> getPhones() {
-        return this.phones;
+        return phones;
     }
 
-    /**
-     * @param name the name to set
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * @param phones the phones to set
+    /** Método setPhones, que sirve para modificar los números de teléfono asociados a un contacto.
+     * @param phones los teléfonos asociados al contacto.
      */
     public void setPhones(List<String> phones) {
         this.phones = phones;
