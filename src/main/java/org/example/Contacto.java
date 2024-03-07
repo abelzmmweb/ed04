@@ -7,11 +7,11 @@ import java.util.List;
  * Esta clase llamada "contacto" nos permite crear un objeto llamado contacto con un atributo
  * llamado "name" que será el nombre del contacto y con otro atributo en forma de lista llamada
  * "phones" donde podremos añadir varios números telefónicos diferentes.
- * @author AZETA
+ * @author Abel Martínez
  * @since 2024
  * @version 1.0
  */
-class Contacto {
+public class Contacto {
     private String name;
     private List<String> phones;
 
@@ -41,5 +41,19 @@ class Contacto {
      */
     public List<String> getPhones() {
         return this.phones;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @param phones the phones to set
+     */
+    public void setPhones(List<String> phones) {
+        this.phones = phones;
     }
 }
